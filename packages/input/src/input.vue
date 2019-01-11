@@ -13,6 +13,7 @@
     ]"
     @mouseenter="hovering = true"
     @mouseleave="hovering = false"
+    @click="$emit('click')"
   >
     <template v-if="type !== 'textarea'">
       <!-- 前置元素 -->
