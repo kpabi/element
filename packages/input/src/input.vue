@@ -29,7 +29,7 @@
         :disabled="inputDisabled"
         :readonly="readonly"
         :autocomplete="autoComplete || autocomplete"
-        :value="currentValue"
+        :value="formattedValue"
         ref="input"
         @compositionstart="handleComposition"
         @compositionupdate="handleComposition"
@@ -143,6 +143,7 @@
       form: String,
       disabled: Boolean,
       readonly: Boolean,
+      valueFormatter: null,
       type: {
         type: String,
         default: 'text'
@@ -210,6 +211,12 @@
           !this.readonly &&
           this.currentValue !== '' &&
           (this.focused || this.hovering);
+      },
+      formattedValue() {
+        if (this.readonly && this.valueFormatter) {
+          return this.valueFormatter(this.currentValue);
+        }
+        return this.currentValue;
       }
     },
 
