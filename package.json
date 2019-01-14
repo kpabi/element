@@ -1,5 +1,5 @@
 {
-  "name": "nf-element-ui",
+  "name": "element-ui",
   "version": "2.4.9",
   "description": "A Component Library for Vue.js.",
   "main": "lib/element-ui.common.js",
