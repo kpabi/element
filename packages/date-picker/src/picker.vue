@@ -573,6 +573,7 @@ export default {
     if (this.type === 'inline') {
       let picker = this.$refs.inlinePicker;
       picker.visible = true ;
+      picker.size = this.pickerOptions.size;
       picker.$on('pick', (date = '', visible = false) => {
         // this.userInput = null;
         this.emitInput(date);

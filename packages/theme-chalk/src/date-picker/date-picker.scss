@@ -5,6 +5,9 @@
 @include b(date-picker) {
   width: 322px;
 
+  &.mini {
+    width: 250px;
+  }
   &.has-sidebar.has-time {
     width: 434px;
   }
@@ -19,6 +22,10 @@
 
   .el-picker-panel__content {
     width: 292px;
+  }
+
+  &.mini .el-picker-panel__content {
+    width: 200px;
   }
 
   table {
