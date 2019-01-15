@@ -93,6 +93,10 @@
               "title": "Select 选择器"
             },
             {
+              "path": "/select-box",
+              "title": "SelectBox 选择器"
+            },
+            {
               "path": "/cascader",
               "title": "Cascader 级联选择器"
             },
@@ -243,6 +247,10 @@
             {
               "path": "/collapse",
               "title": "Collapse 折叠面板"
+            },
+            {
+              "path": "/select-box",
+              "title": "SelectBox"
             }
           ]
         }
@@ -341,6 +349,10 @@
             {
               "path": "/select",
               "title": "Select"
+            },
+            {
+              "path": "/select-box",
+              "title": "Select Box"
             },
             {
               "path": "/cascader",
@@ -493,6 +505,10 @@
             {
               "path": "/collapse",
               "title": "Collapse"
+            },
+            {
+              "path": "/select-box",
+              "title": "SelectBox"
             }
           ]
         }
@@ -743,6 +759,10 @@
             {
               "path": "/collapse",
               "title": "Collapse"
+            },
+            {
+              "path": "/select-box",
+              "title": "SelectBox"
             }
           ]
         }

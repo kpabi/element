@@ -1,0 +1,39 @@
+@import "mixins/mixins";
+@import "common/var";
+@import "./popper";
+
+@include b(select-box-dropdown) {
+  position: absolute;
+  z-index: #{$--index-top + 1};
+  border: $--select-dropdown-border;
+  border-radius: $--border-radius-base;
+  background-color: $--select-dropdown-background;
+  box-shadow: $--select-dropdown-shadow;
+  box-sizing: border-box;
+  margin: 5px 0;
+  padding: 30px;
+  .el-scrollbar.is-empty .el-select-dropdown__list{
+    padding: 0;
+  }
+}
+
+@include b(select-box-dropdown__empty) {
+  padding: $--select-dropdown-empty-padding;
+  margin: 0;
+  text-align: center;
+  color: $--select-dropdown-empty-color;
+  font-size: $--select-font-size;
+}
+
+@include b(select-box-dropdown__wrap) {
+  max-height: 400px;
+  min-height: 200px;
+  margin-top: 30px;
+}
+
+@include b(select-box-dropdown__list) {
+  list-style: none;
+  padding: $--select-dropdown-padding;
+  margin: 0;
+  box-sizing: border-box;
+}
