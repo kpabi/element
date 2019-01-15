@@ -1,6 +1,6 @@
 <template>
     <div class="el-select-box" ref="reference" @click="handleFocus" v-clickoutside="handleClose">
-      <div>hello</div>
+      <div><slot name="label"></slot></div>
       <el-select-menu
          v-show="visible"
         ref="popper"
