@@ -15,6 +15,10 @@
   .el-scrollbar.is-empty .el-select-dropdown__list{
     padding: 0;
   }
+
+  .el-scrollbar{
+    margin-top: 30px;
+  }
 }
 
 @include b(select-box-dropdown__empty) {
@@ -28,7 +32,6 @@
 @include b(select-box-dropdown__wrap) {
   max-height: 400px;
   min-height: 200px;
-  margin-top: 30px;
 }
 
 @include b(select-box-dropdown__list) {

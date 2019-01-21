@@ -13,6 +13,7 @@
               @keydown.native.up.stop.prevent="navigateOptions('prev')"
               @keydown.native.esc.stop.prevent="visible = false"
               @keydown.native.tab="visible = false"
+              @keydown.native.enter.prevent="selectOption"
               >
              
         </el-input>
@@ -41,6 +42,7 @@
   import ElScrollbar from 'element-ui/packages/scrollbar';
   import Clickoutside from 'element-ui/src/utils/clickoutside';
   import NavigationMixin from './navigation-mixin';
+  import { valueEquals } from 'element-ui/src/utils/util';
 
   export default {
     name: 'ElSelectBox',
@@ -118,9 +120,9 @@
       return {
         filteredOptionsCount: 0,
         options: [],
+        cachedOptions: [],
         hoverIndex: -1,
         optionsCount: 0,
-        filteredOptionsCount: 0,
         visible: false,
         query: '',
         selectedLabel: '',
@@ -136,6 +138,29 @@
         // }
         // this.$refs.scrollbar && this.$refs.scrollbar.handleScroll();
       },
+      emitChange(val) {
+        if (!valueEquals(this.value, val)) {
+          this.$emit('change', val);
+        }
+      },
+
+      onOptionDestroy(index) {
+        if (index > -1) {
+          this.optionsCount--;
+          this.filteredOptionsCount--;
+          this.options.splice(index, 1);
+        }
+      },
+
+      selectOption() {
+        if (!this.visible) {
+          this.toggleMenu();
+        } else {
+          if (this.options[this.hoverIndex]) {
+            this.handleOptionSelect(this.options[this.hoverIndex]);
+          }
+        }
+      },
 
       handleOptionSelect(option, byClick) {
         this.$emit('input', option.value);
@@ -150,7 +175,7 @@
       },
 
       handleFocus(event) {
-        this.visible = !this.visible;
+        this.visible = true;
       },
       handleBlur(event) {
 
@@ -176,14 +201,12 @@
           this.previousQuery = val;
           return;
         }
-        console.info('mad city')
         this.previousQuery = val;
         this.$nextTick(() => {
           if (this.visible) this.broadcast('ElSelectDropdown', 'updatePopper');
         });
         this.hoverIndex = -1;
         if (this.remote && typeof this.remoteMethod === 'function') {
-          console.info('mad kid')
           this.hoverIndex = -1;
           this.remoteMethod(val);
         }
