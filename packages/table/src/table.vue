@@ -19,7 +19,11 @@
       v-mousewheel="handleHeaderFooterMousewheel"
       class="el-table__header-wrapper"
       ref="headerWrapper">
-      <table-header
+      <transition :name="selectionHeaderTransition">
+      <div class="el-table__selection-header" v-if="$slots.selectionHeader && selection.length > 0" style="height: 48px;">
+          <slot  name="selectionHeader"></slot>
+      </div>
+      <table-header v-else
         ref="tableHeader"
         :store="store"
         :border="border"
@@ -28,6 +32,8 @@
           width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
         }">
       </table-header>
+      </transition>
+      
     </div>
     <div
       class="el-table__body-wrapper"
@@ -237,12 +243,15 @@
     },
 
     props: {
+
       data: {
         type: Array,
         default: function() {
           return [];
         }
       },
+
+      selectionHeaderTransition: String,
 
       size: String,
 

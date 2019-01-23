@@ -1222,6 +1222,7 @@ You can also select multiple rows.
       label="Address"
       show-overflow-tooltip>
     </el-table-column>
+    <template slot="selectionHeader">Helloworld</template>
   </el-table>
   <div style="margin-top: 20px">
     <el-button @click="toggleSelection([tableData3[1], tableData3[2]])">Toggle selection status of second and third rows</el-button>
