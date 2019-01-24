@@ -19,7 +19,6 @@
       v-mousewheel="handleHeaderFooterMousewheel"
       class="el-table__header-wrapper"
       ref="headerWrapper">
-      <transition :name="selectionHeaderTransition">
       <div class="el-table__selection-header" v-if="$slots.selectionHeader && selection.length > 0">
           <slot  name="selectionHeader"></slot>
       </div>
@@ -31,9 +30,7 @@
         :style="{
           width: layout.bodyWidth ? layout.bodyWidth + 'px' : ''
         }">
-      </table-header>
-      </transition>
-      
+      </table-header>      
     </div>
     <div
       class="el-table__body-wrapper"
