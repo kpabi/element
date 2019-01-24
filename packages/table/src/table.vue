@@ -20,7 +20,7 @@
       class="el-table__header-wrapper"
       ref="headerWrapper">
       <transition :name="selectionHeaderTransition">
-      <div class="el-table__selection-header" v-if="$slots.selectionHeader && selection.length > 0" style="height: 48px;">
+      <div class="el-table__selection-header" v-if="$slots.selectionHeader && selection.length > 0">
           <slot  name="selectionHeader"></slot>
       </div>
       <table-header v-else
