@@ -20,7 +20,7 @@
       class="el-table__header-wrapper"
       ref="headerWrapper">
       <div class="el-table__selection-header" v-if="$slots.selectionHeader && selection.length > 0">
-          <slot  name="selectionHeader"></slot>
+          <slot  name="selectionHeader" v-bind:selection="selection"></slot>
       </div>
       <table-header v-else
         ref="tableHeader"
