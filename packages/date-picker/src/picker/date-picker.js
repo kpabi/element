@@ -19,6 +19,10 @@ export default {
       type: String,
       default: 'date'
     },
+    inline: {
+      type: Boolean,
+      default: false
+    },
     timeArrowControl: Boolean
   },
 

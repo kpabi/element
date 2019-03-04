@@ -128,6 +128,7 @@ Basic date picker measured by 'day'.
     <el-date-picker
       v-model="value1"
       type="date"
+      inline
       placeholder="Pick a day">
     </el-date-picker>
   </div>
@@ -254,6 +255,7 @@ Picking a date range is supported.
     <el-date-picker
       v-model="value6"
       type="daterange"
+      inline
       range-separator="To"
       start-placeholder="Start date"
       end-placeholder="End date">

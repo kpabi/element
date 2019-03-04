@@ -1,6 +1,7 @@
 <template>
-  <div v-if="type == 'inline'">
-      <date-panel ref="inlinePicker"/>
+  <div v-if="inline">
+      <date-range-panel v-if="ranged" ref="inlinePicker"/>
+      <date-panel v-else ref="inlinePicker"/>
   </div>
   <el-input
     class="el-date-editor"
@@ -93,6 +94,7 @@ import Emitter from 'element-ui/src/mixins/emitter';
 import ElInput from 'element-ui/packages/input';
 import merge from 'element-ui/src/utils/merge';
 import DatePanel from './panel/date';
+import DateRangePanel from './panel/date-range';
 
 const NewPopper = {
   props: {
@@ -391,7 +393,7 @@ export default {
     unlinkPanels: Boolean
   },
 
-  components: { ElInput, 'date-panel': DatePanel },
+  components: { ElInput, 'date-panel': DatePanel, 'date-range-panel': DateRangePanel},
 
   directives: { Clickoutside },
 
@@ -445,7 +447,6 @@ export default {
     ranged() {
       return this.type.indexOf('range') > -1;
     },
-
     reference() {
       const reference = this.$refs.reference;
       return reference.$el || reference;
@@ -570,10 +571,10 @@ export default {
     }
   },
   mounted() {
-    if (this.type === 'inline') {
+    if (this.inline) {
       let picker = this.$refs.inlinePicker;
       picker.visible = true ;
-      picker.size = this.pickerOptions.size;
+      // picker.size = this.pickerOptions.size;
       picker.$on('pick', (date = '', visible = false) => {
         // this.userInput = null;
         this.emitInput(date);
