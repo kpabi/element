@@ -31,7 +31,6 @@
         :readonly="readonly"
         :autocomplete="autoComplete || autocomplete"
         ref="input"
-        :value="formattedValue"
         @compositionstart="handleCompositionStart"
         @compositionend="handleCompositionEnd"
         @input="handleInput"
@@ -229,9 +228,9 @@
       },
       formattedValue() {
         if (this.readonly && this.valueFormatter) {
-          return this.valueFormatter(this.currentValue);
+          return this.valueFormatter(this.nativeInputValue);
         }
-        return this.currentValue;
+        return this.nativeInputValue;
       },
       showPwdVisible() {
         return this.showPassword &&
@@ -335,8 +334,8 @@
       setNativeInputValue() {
         const input = this.getInput();
         if (!input) return;
-        if (input.value === this.nativeInputValue) return;
-        input.value = this.nativeInputValue;
+        if (input.value === this.formattedValue) return;
+        input.value = this.formattedValue;
       },
       handleFocus(event) {
         this.focused = true;
